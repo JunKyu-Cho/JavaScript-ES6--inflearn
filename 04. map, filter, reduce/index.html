@@ -1,0 +1,50 @@
+<script>const log = console.log;</script>
+
+<script>
+    const products = [
+        {name: '반팔티', price: 15000},
+        {name: '긴팔티', price: 20000},
+        {name: '후드티', price: 50000}
+    ]
+</script>
+
+<!-- MAP -->
+<script>
+    const map = (f, iter) => {
+        let res = [];
+        for (const a of iter)   res.push(f(a));
+        
+        return res;
+    };
+
+    log(map(p => p.name, products));
+    log(map(p => p.price, products));
+
+    // let names = [];
+    // for (const p of products)   names.push(p.name);
+
+    // let prices = [];
+    // for (const p of products)   prices.push(p.price);
+
+    // log(names);
+    // log(prices);
+</script>
+
+<!-- MAP의 다형성 -->
+ <script>
+    //  log(document.querySelectorAll('*').map(el => el.nodeName));
+    log(map(el => el.nodeName, document.querySelectorAll('*')));
+
+    // const it = document.querySelectorAll('*')[Symbol.iterator]();
+    // log(it.next());
+    // log(it.next());
+    // log(it.next());
+
+    function *gen() {
+        yield 2;
+        yield 3;
+        yield 4;
+    }
+    log(map(a => a * a, gen()));
+
+ </script>
